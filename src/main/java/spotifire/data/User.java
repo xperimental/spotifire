@@ -3,7 +3,7 @@ package spotifire.data;
 public class User {
 
     String spotifyId;
-    String authToken;
+    AuthToken authToken;
     Playlist[] playlists;
 
 }
