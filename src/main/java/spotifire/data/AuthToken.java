@@ -1,10 +1,15 @@
 package spotifire.data;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Objects;
 
 public class AuthToken {
 
+    @JsonProperty("access_token")
     private String accessToken;
+
+    @JsonProperty("refresh_token")
     private String refreshToken;
 
     public String getAccessToken() {
