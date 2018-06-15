@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import spotifire.data.AuthToken;
+import spotifire.state.Client;
 import spotifire.state.GlobalState;
 
 import java.util.Base64;
@@ -27,18 +28,16 @@ public class LoginController {
 
     private static final String TOKEN_URL = "https://accounts.spotify.com/api/token";
 
-    private String clientId = "";
-    private String clientSecret = "";
     private String redirectUrl = "http://localhost:8080/login/callback";
 
     private RestTemplate restTemplate = new RestTemplate();
 
     private String getLoginURL() {
-        return String.format(Locale.US, LOGIN_FORMAT, clientId, redirectUrl);
+        return String.format(Locale.US, LOGIN_FORMAT, Client.ID, redirectUrl);
     }
 
     private String getTokenAuthHeaderValue() {
-        String headerValue = String.format("%s:%s", clientId, clientSecret);
+        String headerValue = String.format("%s:%s", Client.ID, Client.SECRET);
         byte[] headerBytes = headerValue.getBytes();
         return "Basic " + Base64.getEncoder().encodeToString(headerBytes);
     }
