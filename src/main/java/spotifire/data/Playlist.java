@@ -8,6 +8,10 @@ public class Playlist {
     private String spotifyId;
     private FunnelDefinition funnelDefinition;
 
+    public Playlist(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }

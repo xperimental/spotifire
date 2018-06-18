@@ -1,0 +1,18 @@
+html, body {
+    font-family: 'Roboto', 'Helvetica', sans-serif;
+}
+
+/* Needed to properly center the dialog in Browsers that need a polyfill */
+dialog {
+    position: fixed;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+[v-cloak] {
+    display: none;
+}
+
+#playlist-table {
+    width: 100%;
+}

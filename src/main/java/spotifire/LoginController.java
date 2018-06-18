@@ -52,8 +52,6 @@ public class LoginController {
 
     @GetMapping(path = "/callback")
     public ResponseEntity loginCallback(@RequestParam() String code) {
-        System.out.println("Code: " + code);
-        
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         headers.set("Authorization", getTokenAuthHeaderValue());
@@ -69,9 +67,10 @@ public class LoginController {
 
         AuthToken token = response.getBody();
         GlobalState.getInstance().setAuthToken(token);
+        System.out.println("Access token: " + token.getAccessToken());
         
         return ResponseEntity.status(HttpStatus.FOUND)
-            .header("Location", "/playlists")
+            .header("Location", "/playlists.html")
             .build();
     }
 
